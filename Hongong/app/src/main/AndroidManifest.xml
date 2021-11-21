@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".calendar"/>
+        <activity android:name=".mydesk"/>
+        <activity android:name=".statistics"/>
+        <activity android:name=".timer"/>
     </application>
 
 </manifest>
