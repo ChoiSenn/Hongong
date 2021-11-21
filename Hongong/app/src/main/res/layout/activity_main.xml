@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="528dp"
         android:layout_weight="4"
         android:orientation="horizontal">
 
@@ -73,7 +73,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="548dp"
             android:layout_weight="5"
             android:orientation="horizontal">
 
@@ -82,20 +82,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/main1"
-                android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/main1" />
 
             <ImageButton
                 android:id="@+id/move2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/main2"
-                android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/main2" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,7 +129,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
             android:layout_weight="8"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/move5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/main5" />
+
+            <ImageButton
+                android:id="@+id/move6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/main6" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

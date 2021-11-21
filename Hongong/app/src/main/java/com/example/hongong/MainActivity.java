@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TextView dday, name;
     View setting;
     EditText testname, testdate;
-    ImageButton move1, move2, move3, move4;
+    ImageButton move1, move2, move3, move4, move5, move6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {  // 메인 화면
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         move2 = (ImageButton) findViewById(R.id.move2);
         move3 = (ImageButton) findViewById(R.id.move3);
         move4 = (ImageButton) findViewById(R.id.move4);
+        move5 = (ImageButton) findViewById(R.id.move5);
+        move6 = (ImageButton) findViewById(R.id.move6);
 
         dayset.setOnClickListener(new View.OnClickListener() {  // 변경 버튼을 눌러서 D-day 설정 변경
             @Override
@@ -84,6 +87,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), statistics.class);
+                startActivity(intent);
+            }
+        });
+
+        move5.setOnClickListener(new View.OnClickListener() {  // 이미지버튼들을 클릭하면 각 해당하는 액티비티로 이동
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), search.class);
+                startActivity(intent);
+            }
+        });
+
+        move6.setOnClickListener(new View.OnClickListener() {  // 이미지버튼들을 클릭하면 각 해당하는 액티비티로 이동
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://www.google.co.kr/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
