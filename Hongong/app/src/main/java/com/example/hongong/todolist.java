@@ -2,17 +2,32 @@ package com.example.hongong;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
 public class todolist extends calendar {
     TextView datetv;
     Button cancle, add;
+    EditText text;
+
+    String todate;
+    String todo;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();  // firebase 사용을 위한
+    DatabaseReference databaseReference = database.getReference("message");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +37,7 @@ public class todolist extends calendar {
         datetv = (TextView) findViewById(R.id.datetv);
         cancle = (Button) findViewById(R.id.cancle);
         add = (Button) findViewById(R.id.add);
+        text = (EditText) findViewById(R.id.todo);
 
         Intent intent = getIntent();
         final String date = intent.getExtras().getString("selectedDate");
@@ -34,11 +50,21 @@ public class todolist extends calendar {
             }
         });
 
-        add.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {  // 추가 버튼 눌렸을 때
             @Override
             public void onClick(View view) {
+                String todate = date;
+                String todo = text.getText().toString();
+                Log.v("디버그", "1");
 
+                addtodo(todate, todo, false);
             }
         });
+    }
+
+    private void addtodo(String todate, String todo, Boolean fin){  // database로 넘기는 함수
+        Log.v("디버그", "2");
+        todoF todoF = new todoF(todate, todo, fin);
+        databaseReference.child("todo").child(todate).setValue(todoF);
     }
 }
