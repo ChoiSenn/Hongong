@@ -12,10 +12,6 @@ public class todoR {
     }
 
     public String getdolist(){
-        Log.v("2 : ", String.valueOf(dolist));
-        if(dolist == null){
-            return "";
-        }
         return dolist;
     }
 
@@ -24,11 +20,7 @@ public class todoR {
     }
 
     public boolean getfin(){
-        if(fin){
-            return true;
-        } else{
-            return false;
-        }
+        return fin;
     }
 
     public void setfin(boolean fin){

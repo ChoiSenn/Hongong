@@ -1,5 +1,6 @@
 package com.example.hongong;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,12 +16,23 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class MainActivity extends AppCompatActivity {
     Button dayset;
     TextView dday, name;
     View setting;
     EditText testname, testdate;
     ImageButton move1, move2, move3, move4, move5, move6;
+    String test;
+    int day;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();  // firebase 사용을 위한
+    DatabaseReference databaseReference = database.getReference("Hongong");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {  // 메인 화면
@@ -37,6 +49,24 @@ public class MainActivity extends AppCompatActivity {
         move5 = (ImageButton) findViewById(R.id.move5);
         move6 = (ImageButton) findViewById(R.id.move6);
 
+        databaseReference.child("dDay").addValueEventListener(new ValueEventListener() {  // D-day 출력
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {  // 값 받아오기
+                dDayR result = snapshot.getValue(dDayR.class);
+
+                try {
+                    test = result.gettest();
+                    day = result.getdDay();
+
+                    name.setText(test + " 시험까지");
+                    dday.setText("D-" + day);
+
+                } catch (Exception e) {  }  // 없으면 그냥 그대로
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {  }
+        });
+
         dayset.setOnClickListener(new View.OnClickListener() {  // 변경 버튼을 눌러서 D-day 설정 변경
             @Override
             public void onClick(View view) {
@@ -50,8 +80,14 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 testname = (EditText) setting.findViewById(R.id.testname);
                                 testdate = (EditText) setting.findViewById(R.id.testdate);
-                                name.setText(testname.getText().toString() + " 시험까지");
+
+                                test = testname.getText().toString();
+                                day = Integer.parseInt(testdate.getText().toString());
+
+                                name.setText(test + " 시험까지");
                                 dday.setText("D-" + testdate.getText().toString());
+
+                                addDDay(test, day);
                             }
                         });
                 dlg.setNegativeButton("취소", null);
@@ -107,5 +143,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void addDDay(String test, int dDay){  // D-day를 database로 넘기는 함수
+        dDayR dDayR = new dDayR(test, dDay);
+
+        databaseReference.child("dDay").setValue(dDayR);
     }
 }

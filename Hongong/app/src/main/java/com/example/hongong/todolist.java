@@ -31,7 +31,7 @@ public class todolist extends calendar {
     int num;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();  // firebase 사용을 위한
-    DatabaseReference databaseReference = database.getReference("message");
+    DatabaseReference databaseReference = database.getReference("Hongong");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class todolist extends calendar {
                 String todate = date;
                 String todo = text.getText().toString();
 
-//                databaseReference.child("todo").child(todate).addValueEventListener(new ValueEventListener() {
+//                databaseReference.child("todo").child(todate).addValueEventListener(new ValueEventListener() {  // 일정이 여러개일때
 //                    @Override
 //                    public void onDataChange(@NonNull DataSnapshot snapshot) {  // 값 받아오기
 //                        todoR result = snapshot.getValue(todoR.class);
