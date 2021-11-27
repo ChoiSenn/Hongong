@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/calendar.xml" value="0.33" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/diarysetting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/ratingsetting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/timer.xml" value="0.36614583333333334" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/timersave.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/todolist.xml" value="0.1" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/menu/diary.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/diaryvalue"
+        android:title="한 줄 일기 작성하기"/>
+
+    <item
+        android:id="@+id/ratingvalue"
+        android:title="하루 기분 기록하기"/>
+</menu>
