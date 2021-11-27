@@ -3,6 +3,7 @@ package com.example.hongong;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,6 +37,7 @@ public class timer extends MainActivity {
     View timersave;
     int alltime, beforetime;
     String alllog = "";
+    MediaPlayer music;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();  // firebase 사용을 위한
     DatabaseReference databaseReference = database.getReference("Hongong");
@@ -53,6 +57,19 @@ public class timer extends MainActivity {
         timer.setTextColor(Color.GRAY);
 
         timer.setBase(SystemClock.elapsedRealtime());
+
+        final Switch musicSW = (Switch) findViewById(R.id.musicSW);
+
+        musicSW.setOnClickListener(new View.OnClickListener() {  // 스위치 눌리면 음악 재생
+            @Override
+            public void onClick(View view) {
+                if(musicSW.isChecked() == true){
+                    playMusic();
+                } else{
+                    stopMusic();
+                }
+            }
+        });
 
         startB.setOnClickListener(new View.OnClickListener() {  // 시작 버튼 누르면 타이머 시작
             @Override
@@ -154,5 +171,20 @@ public class timer extends MainActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {  }
         });
+    }
+
+    private void playMusic() {  // 음악 재생
+        // closePlayer();
+        music = MediaPlayer.create(timer.this, R.raw.music);
+        music.start();
+        Toast.makeText(this, "백색소음 재생 시작", Toast.LENGTH_SHORT).show();
+    }
+
+    private void stopMusic() {  // 음악 정지
+        if(music != null && music.isPlaying()){
+            music.stop();
+
+            Toast.makeText(this, "백색소음 재생 중지", Toast.LENGTH_SHORT).show();
+        }
     }
 }

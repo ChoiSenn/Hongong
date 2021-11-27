@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView5"
+        <Switch
+            android:id="@+id/musicSW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="스톱워치 모드" />
-
-        <ToggleButton
-            android:id="@+id/change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="변경" />
+            android:gravity="center|right"
+            android:text="백색소음 듣기"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,9 +78,9 @@
     <SlidingDrawer
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:handle="@+id/handle"
+        android:allowSingleTap="true"
         android:content="@+id/content"
-        android:allowSingleTap="true">
+        android:handle="@+id/handle">
 
         <Button
             android:id="@+id/handle"
@@ -92,9 +90,9 @@
             android:textSize="20sp" />
 
         <LinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/content"
             android:background="#989898"
             android:orientation="vertical">
 
