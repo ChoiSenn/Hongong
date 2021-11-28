@@ -13,6 +13,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +33,13 @@ import java.util.Date;
 public class timer extends MainActivity {
     Chronometer timer;
     Button startB, resetB, stopB, saveB;
-    TextView timeTV;
+    TextView timeTV, tvTime;
     long studytime, hour, min, sec, allhour, allmin, allsec;
     View timersave;
     int alltime, beforetime;
     String alllog = "";
     MediaPlayer music;
+    SeekBar playbar;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();  // firebase 사용을 위한
     DatabaseReference databaseReference = database.getReference("Hongong");
@@ -53,6 +55,8 @@ public class timer extends MainActivity {
         stopB = (Button) findViewById(R.id.stopB);
         timeTV = (TextView) findViewById(R.id.timeTV);
         saveB = (Button) findViewById(R.id.saveB);
+        tvTime = (TextView) findViewById(R.id.tvTime);
+        playbar = (SeekBar) findViewById(R.id.playbar);
 
         timer.setTextColor(Color.GRAY);
 
@@ -69,6 +73,20 @@ public class timer extends MainActivity {
                     stopMusic();
                 }
             }
+        });
+
+        playbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {  // 프로그레스 바 움직여서 음악 조정
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if(b){
+                    music.seekTo(i);
+                }
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {  }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {  }
         });
 
         startB.setOnClickListener(new View.OnClickListener() {  // 시작 버튼 누르면 타이머 시작
@@ -178,13 +196,33 @@ public class timer extends MainActivity {
         music = MediaPlayer.create(timer.this, R.raw.music);
         music.start();
         Toast.makeText(this, "백색소음 재생 시작", Toast.LENGTH_SHORT).show();
+
+        new Thread(){  // 스레드 진행
+            SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss");
+            public void run(){
+                if(music == null) return;  // 빠져나가기
+                playbar.setMax(music.getDuration());
+                while(music.isPlaying()){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            playbar.setProgress(music.getCurrentPosition());
+                            tvTime.setText("재생 시간 : " + timeFormat.format(music.getCurrentPosition()));
+                        }
+                    });
+                    SystemClock.sleep(200);  // 0.2초마다 진행 상태 변경
+                }
+            }
+        }.start();
     }
 
     private void stopMusic() {  // 음악 정지
         if(music != null && music.isPlaying()){
             music.stop();
-
             Toast.makeText(this, "백색소음 재생 중지", Toast.LENGTH_SHORT).show();
+
+            playbar.setProgress(0);  // 프로그레스바 진행 시간 초기화
+            tvTime.setText("재생 시간 : ");
         }
     }
 }
