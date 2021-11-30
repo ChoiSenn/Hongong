@@ -4,13 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
-        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/bookshelf.xml" value="0.36614583333333334" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/bookitem.xml" value="0.5" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/booksetting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/bookshelf.xml" value="0.3155487804878049" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/calculator.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/calendar.xml" value="0.33" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/ddaysetting.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/diarysetting.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/mydesk.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/myprize.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/ratingsetting.xml" value="0.36614583333333334" />
+        <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/single_book.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/timer.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/timersave.xml" value="0.36614583333333334" />
         <entry key="..\:/Work/Hongong/Hongong/app/src/main/res/layout/todolist.xml" value="0.1" />
