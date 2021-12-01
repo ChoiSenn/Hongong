@@ -33,7 +33,7 @@ public class calendar extends MainActivity{
     TextView date, list, diary, cheer, study;
     Button todoadd;
     static String d;
-    String dolist, diarytext;
+    String dolist, diarytext, da;
     Boolean fin, isChecked;
     ImageButton check;
     RatingBar rating, setrate;
@@ -117,8 +117,15 @@ public class calendar extends MainActivity{
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {  // 캘린더뷰에서 날짜 클릭하면 해당 날짜 선택
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                d = year + "/" + (month + 1) + "/" + day;
+                if(String.valueOf(day).length() == 1){
+                    da = String.valueOf(day);
+                    da = "0" + da;
+                    Log.v("v", da);
+                }
+
+                d = year + "/" + (month + 1) + "/" + da;
                 date.setText(d);
+                Log.v("v", d);
 
                 databaseReference.child("todo").child(d).addValueEventListener(new ValueEventListener() {  // 투두리스트 출력
                     @Override

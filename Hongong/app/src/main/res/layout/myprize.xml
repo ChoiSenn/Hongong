@@ -4,9 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView5"
+    <Gallery
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="나의 수상 및 자격증" />
+        android:id="@+id/gallery"/>
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="match_parent"
+        android:layout_height="300sp"
+        android:padding="20dp" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="189dp"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:paddingTop="30sp"
+        android:textSize="34sp" />
+
 </LinearLayout>
