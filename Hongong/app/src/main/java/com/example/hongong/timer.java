@@ -123,7 +123,6 @@ public class timer extends MainActivity {
                 Date date = new Date(now);
                 SimpleDateFormat d = new SimpleDateFormat("yyyy/MM/dd");
                 String day = d.format(date);
-                Log.v("v", "0");
 
                 setTime(day, alltime);
             }
@@ -180,10 +179,8 @@ public class timer extends MainActivity {
 //                    Log.v("v", "1");
 //                } catch (Exception e){
                     beforetime = 0;
-                    Log.v("v", "2");
 //                }
                 addTime(day, beforetime + alltime);
-                Log.v("v", "3");
                 Toast.makeText(getApplicationContext(), "공부 시간을 정상적으로 업데이트하였습니다.", Toast.LENGTH_SHORT).show();
             }
             @Override
